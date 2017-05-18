@@ -1,0 +1,24 @@
+Post
+{
+  "id": "123",
+  "header": "header",
+  "content": "content",
+  "author": {
+    "id": "1",
+    "name": "Vasya"
+  },
+  "created": "created",
+  "updated": "updated",
+  "likes": 123
+}
+
+Comment
+{
+  "id": "123",
+  "content": "content",
+  "author": "author",
+  "avatar": "avatarURL",
+  "created": "created",
+  "updated": "updated",
+  "likes": 123
+}
