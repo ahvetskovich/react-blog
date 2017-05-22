@@ -1,0 +1,34 @@
+.container {
+  font-size: 14px;
+  line-height: 1.358;
+  word-wrap: break-word;
+}
+
+.avatar {
+  float: left;
+  margin-bottom: 40px;
+}
+
+.avatar_image {
+  height: 48px;
+  width: 48px;
+}
+
+.author_name {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.content {
+  font-weight: bold;
+  white-space: nowrap;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.facebook_like_icon {
+  display: inline-block;
+  backgroud-image: url('/dist/facebook_like_thumb_50x43.png');
+  background-size: 50px 43px;
+  background-repeat: no-repeat;
+}
