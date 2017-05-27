@@ -11,15 +11,17 @@ function generateArray(genFunc, count) {
 function generatePost() {
   return {
     id: faker.random.number(),
-    header: faker.lorem.words(),
+    title: faker.lorem.words(),
     content: faker.lorem.sentences(),
     author: {
       id: faker.random.number(),
       name: faker.fake('{{name.lastName}} {{name.firstName}}'),
+      avatar: faker.image.imageUrl()
     },
     created: faker.date.past(),
     updated: faker.date.past(),
     likes: faker.random.number(),
+    isLiked: faker.random.boolean()
   };
 }
 
@@ -30,11 +32,12 @@ function generateComment() {
     author: {
       id: faker.random.number(),
       name: faker.fake('{{name.lastName}} {{name.firstName}}'),
-      avatar: faker.image.imageUrl(),
+      avatar: faker.image.imageUrl()
     },
     created: faker.date.past(),
     updated: faker.date.past(),
     likes: faker.random.number(),
+    isLiked: faker.random.boolean()
   };
 }
 

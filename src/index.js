@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App.jsx';
+import {BrowserRouter} from 'react-router-dom'
+import PostStream from './components/PostStream/PostStream.jsx'
+import App from './components/App/App.jsx'
 import './index.css';
 
 
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+      <App/>
+  </BrowserRouter>,
   document.getElementById('root')
 );
