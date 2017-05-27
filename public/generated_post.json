@@ -1,0 +1,46 @@
+{
+    "post": {
+        "id": 68031,
+        "title": "quasi atque modi",
+        "content": "Voluptas aut dolor. At quo saepe. Fugit quia corporis sapiente. Aut impedit impedit nemo hic nemo ut cum occaecati.",
+        "author": {
+            "id": 64689,
+            "name": "Fritsch Sigurd",
+            "avatar": "http://lorempixel.com/640/480"
+        },
+        "created": "2016-06-30T14:22:37.932Z",
+        "updated": "2016-07-31T05:51:54.547Z",
+        "likes": 22039,
+        "isLiked": false
+    },
+    "comments": [
+        {
+            "id": 1328,
+            "postId": 68031,
+            "content": "aut saepe quis",
+            "author": {
+                "id": 29839,
+                "name": "Herzog Heloise",
+                "avatar": "http://lorempixel.com/640/480"
+            },
+            "created": "2017-02-06T19:53:07.212Z",
+            "updated": "2017-02-06T19:51:25.459Z",
+            "likes": 8979,
+            "isLiked": false
+        },
+        {
+            "id": 53853,
+            "postId": 68031,
+            "content": "ut nesciunt sed",
+            "author": {
+                "id": 36390,
+                "name": "Lind Delaney",
+                "avatar": "http://lorempixel.com/640/480"
+            },
+            "created": "2016-11-11T16:35:52.035Z",
+            "updated": "2016-08-10T23:26:27.151Z",
+            "likes": 64456,
+            "isLiked": true
+        }
+    ]
+}

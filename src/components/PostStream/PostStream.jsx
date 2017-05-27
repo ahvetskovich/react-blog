@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Post from '../Post/Post.jsx';
+import PostPreview from '../PostPreview/PostPreview.jsx';
 import styles from './PostStream.css';
 
 class PostStream extends Component {
@@ -9,7 +9,7 @@ class PostStream extends Component {
   }
 
   componentDidMount() {
-    fetch('/public/generated_posts.json')
+    fetch('/public/generated_post_previews.json')
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
@@ -38,9 +38,9 @@ class PostStream extends Component {
     this.setState({postsData: newPostDataState})
   }
 
-  render() {
+  generatePosts() {
     const posts = this.state.postsData.map(postData =>
-      (<Post
+      (<PostPreview
         key={postData.id}
         id={postData.id}
         title={postData.title}
@@ -53,11 +53,14 @@ class PostStream extends Component {
         onPostLike={(postId, changedState) => this.onPostLike(postId, changedState)}
       />)
     );
+    return posts.length > 0 ? posts : (<span>No posts</span>);
+  }
 
+  render() {
     return (
       <div className={styles.container}>
         <div className={styles.Posts}>
-          {posts.length > 0 ? posts : (<span>No posts</span>)}
+          {this.generatePosts()}
         </div>
       </div>
     );

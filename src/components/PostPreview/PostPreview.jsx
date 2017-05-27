@@ -3,17 +3,19 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 import classnames from 'classnames'
 import moment from 'moment'
-import styles from './Post.css';
+import styles from './PostPreview.css';
 
 moment.locale('ru');
 
-const Post = props =>
+const PostPreview = props =>
   (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>
-          {props.title}
-        </h1>
+        <Link to={`/posts/${props.id}`}>
+          <h1 className={styles.title}>
+            {props.title}
+          </h1>
+        </Link>
         <div>
           <Link to={`/authors/${props.author.id}`}>
             <img className={styles.avatar} src={props.author.avatar}/>
@@ -47,7 +49,7 @@ const Post = props =>
     </div>
   );
 
-Post.propTypes = {
+PostPreview.propTypes = {
   id: PropTypes.number.isRequired,
   author: PropTypes.shape({
     id: PropTypes.number,
@@ -61,4 +63,4 @@ Post.propTypes = {
   isLiked: PropTypes.bool
 };
 
-export default Post;
+export default PostPreview;
