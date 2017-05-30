@@ -2,6 +2,6 @@
 // Copy this file, and add rule overrides as needed.
 {
   "extends": "airbnb",
-  "allowForLoopAfterthoughts": true,
+  "allowForLoopAfterthoughts": true, // you can write `i++` instead of `i = i + 1`
   "parser": "babel-eslint"
 }
