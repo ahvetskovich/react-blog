@@ -1,5 +1,12 @@
-const initialState = {};
+import { combineReducers } from 'redux'
+import postStream from './postStreamReducer'
 
-export default function initState(state = initialState) {
-  return state;
-}
+// const initialState = {};
+//
+// export default function initState(state = initialState) {
+//   return state;
+// }
+
+export default combineReducers({
+  postStream
+})

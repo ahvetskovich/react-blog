@@ -1,45 +1,22 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import Post from '../Post/Post.jsx';
+import { getPostStream, postLike } from '../../actions/postStreamAction'
+
 import styles from './PostStream.css';
 
 class PostStream extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { postsData: [] };
-  }
-
   componentDidMount() {
-    fetch('/public/generated_posts.json')
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          return response.json();
-        }
-        throw new Error("Server response wasn't ok");
-      })
-      .then((responseData) => {
-        this.setState({ postsData: responseData });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.props.postStream(this.props.pageSize, this.props.pageNumber);
   }
 
   onPostLike(postId, changedStateIsLiked) {
-    //Here is call of service method with saving like in db
-    const newPostDataState = this.state.postsData;
-    newPostDataState.forEach(post => {
-        if (post.id === postId) {
-          post.isLiked = changedStateIsLiked;
-          post.likes = changedStateIsLiked ? post.likes + 1 : post.likes - 1
-        }
-      }
-    );
-    this.setState({postsData: newPostDataState})
+    this.props.postLike(postId, changedStateIsLiked, this.props.postsData);
   }
 
   render() {
-    const posts = this.state.postsData.map(postData =>
+    const posts = this.props.postsData.map(postData =>
       (<Post
         key={postData.id}
         id={postData.id}
@@ -57,12 +34,32 @@ class PostStream extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.Posts}>
-          {posts.length > 0 ? posts : (<span>No posts</span>)}
+          {this.props.loading ?
+          <span>Loading...</span> :
+          posts.length > 0 ? posts : (<span>No posts</span>)}
         </div>
       </div>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    pageNumber: state.postStream.pageNumber,
+    pageSize: state.postStream.pageSize,
+    postsData: state.postStream.postsData,
+    loading: state.postStream.loading,
+    error: state.postStream.error
+  }
+}
 
-export default PostStream;
+function mapDispatchToProps(dispatch) {
+  return {
+    postStream: bindActionCreators(getPostStream, dispatch),
+    postLike: bindActionCreators(postLike, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostStream)
+
+
