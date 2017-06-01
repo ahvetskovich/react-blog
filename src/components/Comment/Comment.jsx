@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import moment from 'moment';
 import styles from './Comment.css';
+import {Link} from 'react-router-dom'
+import Like from '../Like/Like.jsx'
 
 
-const Comment = props =>
+const Comment = (props) =>
   // constructor(props) {
   //   super(props);
   //   // this.handleLikeClick = this.handleLikeClick.bind(this);
@@ -14,39 +17,38 @@ const Comment = props =>
   (
     <div className={styles.container}>
       <div className={styles.avatar}>
-        <img src={props.author.avatar} className={styles.avatar_image} alt="user_avatar" />
+        <Link to={`/authors/${props.author.id}`}>
+          <img src={props.author.avatar} className={styles.avatar_image} alt="user_avatar"/>
+        </Link>
       </div>
       <div className={styles.body}>
-        <span className={styles.author_name}>
-          {props.author.name}
-        </span>
+        <Link to={`/authors/${props.author.id}`}>
+          <span className={styles.author_name}>
+            {props.author.name}
+          </span>
+        </Link>
         <div>
           <span className={styles.content}>
             {props.content}
           </span>
         </div>
         <div className={styles.action_panel}>
-          <button className={styles.like_btn}>
-            Like
-          </button>
+          <Like
+            onLike={props.onCommentLike.bind(null, props.id, !props.isLiked)}
+            likes={props.likes}
+            isLiked={props.isLiked}>
+          </Like>
           <span> · </span>
-          <button className={styles.reply_btn}>
+          <button
+            disabled="disabled" // no reply feature
+            className={classnames(styles.reply_btn, styles.disabled_btn)}>
             Reply
           </button>
-          <span> · </span>
-          {props.likes ?
-            <span>
-              <span>
-                <i className={styles.facebook_like_icon} />
-                {props.likes}
-              </span>
-              <span> · </span>
+          <div>
+            <span className={styles.created}>
+              {moment(props.created).format('D MMMM YYYY [в] H:mm')}
             </span>
-            : null
-          }
-          <span className={styles.created}>
-            {moment(props.created).format('YYYY-MM-DD HH:mm')}
-          </span>
+          </div>
         </div>
       </div>
     </div>

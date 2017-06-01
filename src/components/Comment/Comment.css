@@ -2,11 +2,12 @@
   font-size: 14px;
   line-height: 1.358;
   word-wrap: break-word;
+  margin-bottom: 20px;
 }
 
 .avatar {
   float: left;
-  margin-bottom: 40px;
+  margin-right: 10px;
 }
 
 .avatar_image {
@@ -31,4 +32,18 @@
   backgroud-image: url('/dist/facebook_like_thumb_50x43.png');
   background-size: 50px 43px;
   background-repeat: no-repeat;
+}
+
+.created {
+  color: #7e7e7e;
+  font-size: 12px;
+}
+
+.reply_btn {
+  border-radius: 4px;
+}
+
+.disabled_btn {
+  color: rgba(128, 128, 128, 0.55);
+  background: rgba(128, 128, 128, 0.14);
 }

@@ -1,12 +1,8 @@
 import { combineReducers } from 'redux'
 import postStream from './postStreamReducer'
-
-// const initialState = {};
-//
-// export default function initState(state = initialState) {
-//   return state;
-// }
+import postPage from './postPageReducer'
 
 export default combineReducers({
-  postStream
+  postStream,
+  postPage
 })

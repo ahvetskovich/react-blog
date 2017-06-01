@@ -3,19 +3,12 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 import classnames from 'classnames'
 import moment from 'moment'
-import styles from './Post.css';
+import styles from './PostPreview.css';
+import Like from '../Like/Like.jsx'
 
 moment.locale('ru');
 
-const Post = props =>
-  // constructor(props) {
-  //
-  // super(props);
-  // this.handleLikeClick = this.handleLikeClick.bind(this);
-  // this.state = {isLoggedIn: false};
-  // }
-
-  // render() {
+const PostPreview = props =>
   (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -44,7 +37,12 @@ const Post = props =>
         </div>
       </div>
       <div className={styles.info}>
-        <div className={styles.voting}>
+        <Like
+          onLike={props.onPostLike.bind(null, props.id, !props.isLiked)}
+          likes={props.likes}
+          isLiked={props.isLiked}>
+        </Like>
+        {/*<div className={styles.voting}>
           <i
             onClick={props.onPostLike.bind(null, props.id, !props.isLiked)}
             className={classnames(styles.like,
@@ -52,12 +50,12 @@ const Post = props =>
             )}
           />
           {props.likes}
-        </div>
+        </div>*/}
       </div>
     </div>
   );
 
-Post.propTypes = {
+PostPreview.propTypes = {
   id: PropTypes.number.isRequired,
   author: PropTypes.shape({
     id: PropTypes.number,
@@ -71,4 +69,4 @@ Post.propTypes = {
   isLiked: PropTypes.bool
 };
 
-export default Post;
+export default PostPreview;

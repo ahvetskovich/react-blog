@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Post from '../Post/Post.jsx';
+import PostPreview from '../PostPreview/PostPreview.jsx';
 import { getPostStream, postLike } from '../../actions/postStreamAction'
 
 import styles from './PostStream.css';
@@ -12,12 +12,12 @@ class PostStream extends Component {
   }
 
   onPostLike(postId, changedStateIsLiked) {
-    this.props.postLike(postId, changedStateIsLiked, this.props.postsData);
+    this.props.postLike(postId, changedStateIsLiked);
   }
 
   render() {
     const posts = this.props.postsData.map(postData =>
-      (<Post
+      (<PostPreview
         key={postData.id}
         id={postData.id}
         title={postData.title}
@@ -33,7 +33,7 @@ class PostStream extends Component {
 
     return (
       <div className={styles.container}>
-        <div className={styles.Posts}>
+        <div className={styles.posts}>
           {this.props.loading ?
           <span>Loading...</span> :
           posts.length > 0 ? posts : (<span>No posts</span>)}

@@ -2,7 +2,7 @@ import {
   GET_POST_STREAM_REQUEST,
   GET_POST_STREAM_SUCCESS,
   GET_POST_STREAM_FAIL,
-  POST_CHANGE_LIKE_STATE
+  POST_PREVIEW_CHANGE_LIKE_STATE
 } from '../constants/PostStream'
 
 export function getPostStream(pageSize, pageNumber) {
@@ -14,7 +14,7 @@ export function getPostStream(pageSize, pageNumber) {
     });
 
     // add setTimeout for testing
-    fetch('/public/generated_posts.json')
+    fetch('/public/generated_post_previews.json')
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
@@ -43,7 +43,7 @@ export function getPostStream(pageSize, pageNumber) {
 export function postLike(postId, changedStateIsLiked) {
   return (dispatch) => {
     dispatch({
-      type: POST_CHANGE_LIKE_STATE,
+      type: POST_PREVIEW_CHANGE_LIKE_STATE,
       changedStateIsLiked: changedStateIsLiked,
       postId: postId
     });

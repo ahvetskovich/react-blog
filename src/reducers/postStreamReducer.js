@@ -2,7 +2,7 @@ import {
   GET_POST_STREAM_REQUEST,
   GET_POST_STREAM_SUCCESS,
   GET_POST_STREAM_FAIL,
-  POST_CHANGE_LIKE_STATE
+  POST_PREVIEW_CHANGE_LIKE_STATE
 } from '../constants/PostStream'
 
 const initialState = {
@@ -34,7 +34,7 @@ export default function postStream(state = initialState, action) {
         loading: false
       };
 
-    case POST_CHANGE_LIKE_STATE:
+    case POST_PREVIEW_CHANGE_LIKE_STATE:
       const postsData = [...state.postsData].map(post => {
           if (post.id === action.postId) {
             post.isLiked = action.changedStateIsLiked;
